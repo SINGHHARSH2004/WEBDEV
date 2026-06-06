@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'gilroy';
+}
+html,body{
+    height: 100%;
+    width: 100%;
+}
+
+#main{
+    height: 100%;
+    width: 100%;
+    background-color:white;
+}
+
+#nav{
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+   /* // background-color:wheat; */
+    padding: 0px 20px;
+}
+#nav h4{
+    font-size: 20px;
+    font-weight: 500;
+}
+#nav i{
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 50%;
+    font-weight: 500;
+}
+#center{
+    
+     width: 100%;
+    /* / background-color: red; */
+     padding: 40px 80px ;
+}
+#center h1{
+    font-size: 80px;
+    font-weight: 500;
+    line-height: 85px;
+}
+#center-in{
+    height: 200px;
+   /* / background-color: red; */
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+#center-in p{
+    font-size:22px ;
+    font-weight: 500;
+    line-height: 32px;
+}
+#right{
+    width: 20%;
+}
+.elem{
+  /* /  background-color: yellowgreen; */
+  /* /  margin: 5px; */
+     border-top:2px solid black;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.elem i{
+    font-size: 25px;
+    font-weight: 600;
+    opacity: 0;
+}
+.elem a{
+    color:#000;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+}
+.elem:hover i{
+    opacity: 1;
+}
+.elem:hover{
+    background-color: rgb(153, 147, 147);
+    text-decoration: underline;
+}
+#bottom{
+    height: 35%;
+   width: 100%;
+   background-color: red;
+    background-image:url(https://images.unsplash.com/photo-1773921636022-f7e065fb65ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YmxhY2slMjB3b21lbiUyMG1vZGVsJTIwaW4lMjBsYW5kc2NhcGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60);
+    background-size: cover;
+    background-position:  0 45%;
+
+}
