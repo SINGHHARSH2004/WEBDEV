@@ -21,5 +21,47 @@ body {
     height: 400px ;
     width: 300px;
     background-color: #fff;
-    border-radius: 20px;
+    border-radius: 30px;
+    padding: 30px;
+    display: flex;
+    flex-direction:column ;
+    justify-content: space-between;
+}
+.card .top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.top img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 1px solid #dadada ;
+    padding: 4px;
+    object-fit: cover;
+}
+
+.top button{
+    display: flex;
+    align-items: center;
+    border: 1px solid #dadada;
+    padding: 3px 6px;
+    font-size:11px ;
+    border-radius: 5px;
+    gap: 3px;
+    background-color: transparent;
+    color: #8b8b8b ;
+}
+.center{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #b1b1b1;
+    padding-top: 15px;
 }
