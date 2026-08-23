@@ -71,9 +71,14 @@ function Home() {
       </form>
       {error && <div className="error-message">{error}</div> }
 
-        {loading?(
-          <div className="loading">Loading...</div>
-        ):(
+      {loading ? (
+        <div className="loading">Loading...</div>
+      ) : movies.length === 0 ? (
+        <div className="no-results">
+          <h2>No movies found</h2>
+          <p>Try searching for a different title.</p>
+        </div>
+      ) : (
         <div className="movies-grid">
           {movies.map((movie) => (
             <MovieCard movie={movie} key={movie.id} />
@@ -83,34 +88,6 @@ function Home() {
     </div>
   );
 }
+
 export default Home;
-
-
-// STATE IS SOMETHING WHERE ONCE ITS UPDATED , THE COMPONENT WILL CHANGE AND RE RENDER ITSELF TO SHOW THE NEW STATE
-
-// WHEM EVER WE ARE MAKING FORM WE ALWAYS HAVE TO CONECTED ALL THE ELEMENT OF FORM WITH PIECE OF STATE 
-// SO WHEN EVER WE UPDATE THE STATE THIS COMPONENT IS GOING TO RERENDER ITSELF ON SCREEN 
-// TO CONNECT THE STATE WITH COMPONENT WE PUT 
-// VALUE={searchQuery}IN SIDE THE FORM
-
-
-// onChange={(e) => setSearchQuery(e.target.value)}
-// BEFORE THIS WE CANNOT TYPE ON SEARCH BUTTON 
-// WITH THE HEPL OF THIS WE CAN TYPE ON SEARCH BUTTON AND IT WILL UPDATE THE STATE AND RERENDER THE COMPONENT
-
-        //   movie.title.toLowerCase().startsWith(searchQuery) && <MovieCard movie={movie} key={movie.id} />
-
-        //   CONITONAL RENDERING ==> IT ONLY RENDER THE MOVIE CARD IF THE TITLE OF MOVIE STARTS WITH SEARCH QUERY OTHERWISE IT WILL NOT RENDER ANYTHING
-
-// we are creating the form for searching the movie
-
-{/* <MovieCard movie={movie} key={movie.id} />
-IT IS A COMPONENT WHICH IS TAKING THE MOVIE AS A PROP AND RENDERING THE MOVIE CARD ON SCREEN */}
-// .map() used to render the array of value dynamically
-// we use .map() fuction which is going iterate over all value inside . of our right for every single value it going to take it and pass it to this function 
-// and this function need to return some jsx code
-
-// when ever you do this ,you to need to add .key() property to the component you return 
-
-// because react need to kenown which component to update based on the interaction that happen with the  web page 
-// so we need to mark every single one of these components with a unique identifier,so react can handel all of the state updates that it typically does 
+ 

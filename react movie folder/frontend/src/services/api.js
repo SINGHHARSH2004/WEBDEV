@@ -1,6 +1,6 @@
-const API_KEY = "d281e906f37b5f28943a05ea2120cef0";
-// this is the base endpoint or the base URL for this API
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY || "d281e906f37b5f28943a05ea2120cef0";
 const BASE_URL = "https://api.themoviedb.org/3";
+
 
 // so if we want to send a request  we send a request to this URL and slash and then whatever the operation is that we want like slash search ,slash popular 
 // POPULAR MOVIE

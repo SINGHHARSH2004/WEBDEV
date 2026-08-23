@@ -25,15 +25,12 @@ dist-ssr/
 *.tar.gz
 *.rar
 *.7z
+*.dmg
+*.iso
 
-# Editor directories and files
+# Editor / OS files
 .vscode/*
 !.vscode/extensions.json
 .idea/
 .DS_Store
 Thumbs.db
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?

@@ -12,12 +12,17 @@ function MovieCard({ movie }){
        if(favorite) removeFromFavorites(movie.id) 
         else addToFavorites(movie)
     }
-    return(
+    return (
         <div className="movie-card">
             <div className="movie-poster">
                 <img
-                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                    alt={movie.title}
+                    src={
+                        movie.poster_path
+                            ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                            : "https://placehold.co/500x750/1a1a2e/ffffff?text=No+Poster"
+                    }
+                    alt={movie.title || "Movie poster"}
+                    loading="lazy"
                 />
                 <div className="movie-overlay">
                     <button
@@ -29,14 +34,13 @@ function MovieCard({ movie }){
                         {favorite ? "❤️" : "🤍"}
                     </button>
                 </div>
-                </div>
-                <div className="movie-info">
-                    <h3>{movie.title}</h3>
-                     <p>{movie.release_date?.split("-")[0]} </p>
-                </div>
             </div>
-       
-    )
+            <div className="movie-info">
+                <h3>{movie.title}</h3>
+                <p>{movie.release_date ? movie.release_date.split("-")[0] : "N/A"}</p>
+            </div>
+        </div>
+    );
 }
 // ab isko export kare gedusre file main
 // agar ham yaha par export nahi lekhete tho hame function of moviecard ke pahle export likna padhta or import me {}me MovieCard ko lekhna padtha

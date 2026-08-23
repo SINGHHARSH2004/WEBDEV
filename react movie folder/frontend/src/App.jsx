@@ -2,7 +2,7 @@ import "./css/App.css";
 // yaha par ham moviecard ko import kare ge
 // import MovieCard from './components/MovieCard';
 import Favorites from './pages/Favorites';
-import Home from './pages/home';
+import Home from './pages/Home';
 import { Routes,Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import { MovieProvider } from "./context/MovieContext";
@@ -24,17 +24,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
- {/* {movieNumber===1?( 
-    <MovieCard movie={{title:"harsh movie",release_date: "2024"}}/>
-   ):(
-    <MovieCard movie={{title:"jones",release_date: "2020"}}/>
-   )}  */}
