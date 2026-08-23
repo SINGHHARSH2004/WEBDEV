@@ -6,7 +6,7 @@ $GH_PATH = "C:\Program Files\GitHub CLI\gh.exe"
 $BASE_DIR = "C:\Users\Harsh\OneDrive\Desktop\WEBDEV"
 
 Write-Host "======================================================" -ForegroundColor Cyan
-Write-Host "🚀 Automated Individual GitHub Repository Publisher" -ForegroundColor Cyan
+Write-Host " Automated Individual GitHub Repository Publisher" -ForegroundColor Cyan
 Write-Host "======================================================" -ForegroundColor Cyan
 
 # 1. Verify GitHub CLI Authentication
@@ -14,14 +14,13 @@ Write-Host "`n[1/2] Checking GitHub authentication status..." -ForegroundColor Y
 $authCheck = & $GH_PATH auth status 2>&1
 
 if ($LASTEXITCODE -ne 0) {
-    Write-Host "`n❌ GitHub CLI is not logged in yet." -ForegroundColor Red
-    Write-Host "👉 Please run the following command once in your terminal to authenticate:" -ForegroundColor Yellow
+    Write-Host "`n GitHub CLI is not logged in yet." -ForegroundColor Red
+    Write-Host " Please run the following command once in your terminal to authenticate:" -ForegroundColor Yellow
     Write-Host '   & "C:\Program Files\GitHub CLI\gh.exe" auth login' -ForegroundColor Green
-    Write-Host "Select: GitHub.com -> HTTPS -> Yes (authenticate Git) -> Login with a web browser" -ForegroundColor White
     exit
 }
 
-Write-Host "✅ GitHub CLI is authenticated!" -ForegroundColor Green
+Write-Host " GitHub CLI is authenticated!" -ForegroundColor Green
 
 # 2. Define Project List
 $projects = @(
@@ -70,22 +69,22 @@ foreach ($proj in $projects) {
     $desc = $proj.Description
 
     Write-Host "`n--------------------------------------------------" -ForegroundColor DarkCyan
-    Write-Host "📦 Processing project: $name" -ForegroundColor Cyan
-    Write-Host "📁 Directory: $dir" -ForegroundColor Gray
+    Write-Host " Processing project: $name" -ForegroundColor Cyan
+    Write-Host " Directory: $dir" -ForegroundColor Gray
 
     if (-not (Test-Path $dir)) {
-        Write-Host "⚠️ Directory not found, skipping: $dir" -ForegroundColor Yellow
+        Write-Host " Directory not found, skipping: $dir" -ForegroundColor Yellow
         continue
     }
 
     Set-Location $dir
 
     # Check if repo already exists on GitHub
-    $repoExists = & $GH_PATH repo view "SINGHHARSH2004/$name" 2>&1
+    $repoCheck = & $GH_PATH repo view "SINGHHARSH2004/$name" 2>&1
     if ($LASTEXITCODE -eq 0) {
-        Write-Host "ℹ️ Repository 'SINGHHARSH2004/$name' already exists on GitHub." -ForegroundColor Green
+        Write-Host " Repository 'SINGHHARSH2004/$name' already exists on GitHub." -ForegroundColor Green
     } else {
-        Write-Host "🆕 Creating repository '$name' on GitHub..." -ForegroundColor Yellow
+        Write-Host " Creating repository '$name' on GitHub..." -ForegroundColor Yellow
         & $GH_PATH repo create "SINGHHARSH2004/$name" --public --description "$desc"
     }
 
@@ -98,14 +97,15 @@ foreach ($proj in $projects) {
     git remote remove origin 2>$null
     git remote add origin "https://github.com/SINGHHARSH2004/$name.git"
 
-    # Stage files (ignoring huge executables)
-    git add -A ":!*.exe" ":!*.zip" ":!node_modules" ":!dist"
+    # Stage files safely
+    git add .
+    git reset -- '*.exe' '*.zip' 'node_modules' 'dist' 2>$null
     git commit -m "feat: initial release for $name" --allow-empty
     
-    Write-Host "🚀 Pushing to https://github.com/SINGHHARSH2004/$name.git ..." -ForegroundColor Magenta
+    Write-Host " Pushing to https://github.com/SINGHHARSH2004/$name.git ..." -ForegroundColor Magenta
     git push -u origin main --force
 
-    Write-Host "✅ Successfully published: https://github.com/SINGHHARSH2004/$name" -ForegroundColor Green
+    Write-Host " Successfully published: https://github.com/SINGHHARSH2004/$name" -ForegroundColor Green
 }
 
-Write-Host "`n🎉 All individual repositories have been created and published!" -ForegroundColor Green
+Write-Host "`n All individual repositories have been created and published!" -ForegroundColor Green
