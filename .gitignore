@@ -24,3 +24,7 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+
+# Study Notes / Large PDFs
+*.pdf
+
